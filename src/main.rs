@@ -13,6 +13,7 @@ struct Query;
 
 graphql_object!(Query: Context |&self| {
     field user(&executor, id: Option<String>) -> FieldResult<Option<User>> {
+        // Doesn't panic if you remove this line
         executor.look_ahead();
 
         if let Some(id) = id {
